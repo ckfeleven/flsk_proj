@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Minicard</h1>
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.username.label }}<br>
+            {{ form.username(size=32)}}
+        </p>
+
+        <p>
+            {{ form.date.label }}<br>
+            {{ form.date }}
+        </p>
+
+        <p>
+           {{ form.project.label }}<br>
+           {{ form.project }}
+        </p>
+
+        <p>
+           {{ form.task.label }}<br>
+           {{ form.task }}
+        </p>
+
+        <p>
+           {{ form.predicted_hrs.label }}<br>
+           {{ form.predicted_hrs }}
+        </p>
+
+        <p>
+           {{ form.actual_hrs.label }}<br>
+           {{ form.actual_hrs }}
+        </p>
+        <p> {{ form.submit() }} </p>
+
+
+    </form>
+{% endblock %}
