@@ -139,3 +139,5 @@ vignettes/*.pdf
 
 # Shiny token, see https://shiny.rstudio.com/articles/shinyapps.html
 rsconnect/
+flask_cmd.cmd
+flask_cmd.cmd.lnk
