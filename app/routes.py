@@ -139,6 +139,10 @@ def chart():
     values = [x[1] for x in sum_data]
     return render_template('chart.html', values=values, labels=labels, legend=legend)
     
+@app .route('/simple_chart2')
+def chart2():
+    return render_template('chart2.html')
+    
 @app.route('/item/<int:id>', methods =  ['GET', 'POST'])
 def edit(id):
     qry = db.session.query(Minicard).filter(Minicard.id == id)
