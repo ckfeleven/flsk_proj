@@ -7,4 +7,6 @@ Things to do
 - Get chart.js stacked bar charts to work to display breakdown of daily hours for each team (might use pandas to calculate the total time per task and breakdown across the team)
 - Add a page to enter expected team hours per day (usually entered by team leader)
 - Sort out the use of float/decimal in the database (decimals don't work at the moment)
+- Create table for task/sub-task using self referential structure, http://docs.sqlalchemy.org/en/latest/orm/self_referential.html
+- Use task/sub-task to create dymnamic dropdowns
 
