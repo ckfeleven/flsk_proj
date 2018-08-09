@@ -141,3 +141,4 @@ vignettes/*.pdf
 rsconnect/
 flask_cmd.cmd
 flask_cmd.cmd.lnk
+.Rproj.user

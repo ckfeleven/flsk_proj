@@ -54,3 +54,16 @@ class Minicard(db.Model):
 @login.user_loader
 def load_user(id):
     return User.query.get(int(id))
+    
+class Team(db.Model):
+    team = db.Column(db.String, primary_key=True)
+
+    def __repr__(self):
+        return '<Team {}>'.format(self.team) 
+    
+class Project(db.Model):
+    project = db.Column(db.String, primary_key=True)
+
+    def __repr__(self):
+        return '<Project {}>'.format(self.project) 
+    
