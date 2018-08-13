@@ -10,6 +10,7 @@ from wtforms import StringField, PasswordField, BooleanField, SubmitField, Selec
 from wtforms.validators import ValidationError, DataRequired, Email, EqualTo
 from app.models import User
 from datetime import date
+#from flask_login import current_user
 #from wtforms.ext.sqlachemy.fields import QuerySelectField
 
 class LoginForm(FlaskForm):

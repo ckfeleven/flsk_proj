@@ -14,6 +14,8 @@ library(RSQLite)
 conn = dbConnect(SQLite(), dbname = 'app.db') 
 dbListTables(conn)
 
+dbGetQuery(conn, 'select * from project')
+
 reslts <- dbGetQuery(conn, 'select * from minicard')
 
 dbDisconnect(conn)
