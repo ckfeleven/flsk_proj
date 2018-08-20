@@ -72,7 +72,6 @@ def search_results(search):
     results = []
     search_string = search.data['date']
 
-    #if search.data['date'] != '':
     qry = db.session.query(Minicard).filter(Minicard.date == search_string)
     results = qry.all()
 
@@ -85,28 +84,24 @@ def search_results(search):
         table.border = True
         return render_template('results.html', table=table)
 
-#db.session.query(Minicard.username, label('total_hrs', func.sum(Minicard.predicted_hrs))).group_by(Minicard.username).all()
 
 @app.route('/minicard', methods=['GET', 'POST'])
 def minicard():
     form = MiniForm(username = current_user.username)
-    #form.username.default = current_user.username
+    
     if request.method == 'POST':
 
         minicard = Minicard()
         save_changes(minicard, form)
         return redirect('/minicard')
-    #if form.validate_on_submit():
-    #    flash('Login requested for user {}, remember_me={}'.format(
-    #        form.username.data, form.remember_me.data))
-    #    return redirect('/index')
+
     return render_template('minicard.html', title = 'Minicard', form=form)
 
 
 def save_changes(minicard, form):
     minicard.username = form.username.data
     minicard.date = form.date.data
-    minicard.project = form.project.data
+    minicard.project = str(form.project.data)
     minicard.task = form.task.data
     minicard.predicted_hrs = form.predicted_hrs.data
     minicard.actual_hrs = form.actual_hrs.data

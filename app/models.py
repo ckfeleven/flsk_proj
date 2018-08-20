@@ -41,7 +41,8 @@ class Minicard(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     timestamp = db.Column(db.DateTime, default=datetime.utcnow)
     username = db.Column(db.String(64))
-    date = db.Column(db.String(64))
+    date = db.Column(db.Date)
+    #date = db.Column(db.String(64))
     project = db.Column(db.String(64))
     task = db.Column(db.String(64))
     predicted_hrs = db.Column(db.Numeric)
@@ -64,6 +65,9 @@ class Team(db.Model):
 class Project(db.Model):
     project = db.Column(db.String, primary_key=True)
 
+    #def __repr__(self):
+    #    return '<Project {}>'.format(self.project)
+        
     def __repr__(self):
-        return '<Project {}>'.format(self.project) 
+        return self.project
     

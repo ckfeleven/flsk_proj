@@ -6,10 +6,19 @@ Created on Mon Jul 23 20:51:50 2018
 """
 
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField, SubmitField, SelectField, IntegerField, DateField, DecimalField
+from wtforms import (StringField, PasswordField, BooleanField, SubmitField, 
+SelectField, IntegerField, DecimalField, DateField)
 from wtforms.validators import ValidationError, DataRequired, Email, EqualTo
-from app.models import User
+from app.models import User, Project
 from datetime import date
+
+#from wtforms_sqlalchemy.fields import QuerySelectField
+
+from wtforms.ext.sqlalchemy.fields import QuerySelectField
+
+
+#from wtforms.fields.html5 import DateField
+
 #from flask_login import current_user
 #from wtforms.ext.sqlachemy.fields import QuerySelectField
 
@@ -19,16 +28,22 @@ class LoginForm(FlaskForm):
      remember_me = BooleanField('Remember Me')
      submit = SubmitField('Sign In')
      
-    
+def proj_list():
+    return Project.query  
+
+
     
 class MiniForm(FlaskForm):
      username = StringField('Username', validators=[DataRequired()])
-     date = StringField('Date', default = date.today)
-     project = SelectField('Project', choices=[('project1', 'project1'), ('project2','project2')])
+     date = DateField('Date', default = date.today)
+     #project = SelectField('Project', choices=[('project1', 'project1'), ('project2','project2')])
+     project = QuerySelectField(query_factory = proj_list, get_label='project')
      task = SelectField('Task', choices=[('task1', 'task1'), ('task2', 'task2'), ('task3', 'task3')])
      predicted_hrs = DecimalField('Predicted Hours')
      actual_hrs = DecimalField('Actual Hours')
      submit = SubmitField('Submit')
+     
+
      
 class RegistrationForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
