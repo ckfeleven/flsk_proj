@@ -1,0 +1,39 @@
+forms.py
+
+from app.models import User, Project, Team
+
+    
+def team_list():
+    return Team.query
+
+    team = QuerySelectField(query_factory = team_list, get_label='team')
+
+models.py
+
+    team = db.Column(db.String, db.ForeignKey('team.team'))
+
+    def __repr__(self):
+        return '<Team {}>'.format(self.team) 
+
+        
+#class Tasks(db.Model):
+    #__tablename__ = 'tasks'
+#    id = db.Column(db.Integer, primary_key=True)
+#    parent_id = db.Column(db.Integer, db.ForeignKey('tasks.id'))
+#    task = db.Column(db.String(64))
+#    children = db.relationship("Tasks")    
+    
+#   def __repr__(self):
+#        return '<Task {}>'.format(self.task)
+
+routes.py
+
+        user = User(username=form.username.data, email=form.email.data, team=str(form.team.data))
+
+templates/registeer.html
+
+        <p>
+            {{ form.team.label }}<br>
+            {{ form.team }}<br>
+
+        </p>

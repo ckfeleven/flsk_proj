@@ -177,13 +177,13 @@ $(document).ready(function () {
 <p>Try executing this chunk by clicking the <em>Run</em> button within the chunk or by placing your cursor inside it and pressing <em>Ctrl+Shift+Enter</em>.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbImRhdGEuZnJhbWUiXSwibmNvbCI6MSwibnJvdyI6M30sInJkZiI6Ikg0c0lBQUFBQUFBQUJsMVFTdzZDTUJBZHFJaVFhRXc4QjhUUEZUeUFjY1cyUWxVVVcxSktkT25KMVNtMExxWkoyNW5YbVRmdjliZ3Z0bW1SQWtBSUxNS1RZVGdKOFFoZ0FvbTlYd0JzTlFBQVM5ek1QY3dPV3QxRWFUWWszNUo4UndnanlSK2ljMlFlak51eG1OUW1XajF6WHorM0t0OHdMRVpKeTRaM2xEU3R1T0g1V1dNL1poL1NFcXZXMUVwaVUyanRSYVE1MEFSWTl0SXFxYkx5MnN0N3RsbmJDZTVmd01rTFJtbi9PQmhuaGwvSEZUbXVxWkNYV2dvdnZ1RW4wYmhrZ1pZSHgzbXJhMm04RlVTNzNDakRmVjFhcXNZamd6bjQvQUNNUG1MZXpRRUFBQT09In0= -->
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["project"],"name":[1],"type":["chr"],"align":["left"]}],"data":[{"1":"Project1"},{"1":"Project2"},{"1":"Project3"}],"options":{"columns":{"min":{},"max":[10],"total":[1]},"rows":{"min":[10],"max":[10],"total":[3]},"pages":{}}}
-  </script>
-</div>
-<!-- rnb-frame-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGJMaXN0VGFibGVzKGNvbm4pXG5cbmBgYCJ9 -->
+<pre class="r"><code>dbListTables(conn)
+</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiYWxlbWJpY192ZXJzaW9uXCIgXCJtaW5pY2FyZFwiICAgICAgICBcInBvc3RcIiAgICAgICAgICAgIFwicHJvamVjdFwiICAgICAgICAgXCJ0ZWFtXCIgICAgICAgICAgIFxuIn0= -->
+<pre><code>[1] &quot;alembic_version&quot; &quot;minicard&quot;        &quot;post&quot;            &quot;project&quot;         &quot;team&quot;           </code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>Add a new chunk by clicking the <em>Insert Chunk</em> button on the toolbar or by pressing <em>Ctrl+Alt+I</em>.</p>
@@ -191,7 +191,7 @@ $(document).ready(function () {
 <p>The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike <em>Knit</em>, <em>Preview</em> does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.</p>
 <!-- rnb-text-end -->
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIlIgTm90ZWJvb2siDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KDQpUaGlzIGlzIGFuIFtSIE1hcmtkb3duXShodHRwOi8vcm1hcmtkb3duLnJzdHVkaW8uY29tKSBOb3RlYm9vay4gV2hlbiB5b3UgZXhlY3V0ZSBjb2RlIHdpdGhpbiB0aGUgbm90ZWJvb2ssIHRoZSByZXN1bHRzIGFwcGVhciBiZW5lYXRoIHRoZSBjb2RlLiANCg0KVHJ5IGV4ZWN1dGluZyB0aGlzIGNodW5rIGJ5IGNsaWNraW5nIHRoZSAqUnVuKiBidXR0b24gd2l0aGluIHRoZSBjaHVuayBvciBieSBwbGFjaW5nIHlvdXIgY3Vyc29yIGluc2lkZSBpdCBhbmQgcHJlc3NpbmcgKkN0cmwrU2hpZnQrRW50ZXIqLiANCg0KYGBge3J9DQoNCmxpYnJhcnkoUlNRTGl0ZSkNCg0KY29ubiA9IGRiQ29ubmVjdChTUUxpdGUoKSwgZGJuYW1lID0gJ2FwcC5kYicpIA0KZGJMaXN0VGFibGVzKGNvbm4pDQoNCmRiR2V0UXVlcnkoY29ubiwgJ3NlbGVjdCAqIGZyb20gcHJvamVjdCcpDQoNCnJlc2x0cyA8LSBkYkdldFF1ZXJ5KGNvbm4sICdzZWxlY3QgKiBmcm9tIG1pbmljYXJkJykNCg0KZGJEaXNjb25uZWN0KGNvbm4pDQoNCmBgYA0KDQpBZGQgYSBuZXcgY2h1bmsgYnkgY2xpY2tpbmcgdGhlICpJbnNlcnQgQ2h1bmsqIGJ1dHRvbiBvbiB0aGUgdG9vbGJhciBvciBieSBwcmVzc2luZyAqQ3RybCtBbHQrSSouDQoNCldoZW4geW91IHNhdmUgdGhlIG5vdGVib29rLCBhbiBIVE1MIGZpbGUgY29udGFpbmluZyB0aGUgY29kZSBhbmQgb3V0cHV0IHdpbGwgYmUgc2F2ZWQgYWxvbmdzaWRlIGl0IChjbGljayB0aGUgKlByZXZpZXcqIGJ1dHRvbiBvciBwcmVzcyAqQ3RybCtTaGlmdCtLKiB0byBwcmV2aWV3IHRoZSBIVE1MIGZpbGUpLg0KDQpUaGUgcHJldmlldyBzaG93cyB5b3UgYSByZW5kZXJlZCBIVE1MIGNvcHkgb2YgdGhlIGNvbnRlbnRzIG9mIHRoZSBlZGl0b3IuIENvbnNlcXVlbnRseSwgdW5saWtlICpLbml0KiwgKlByZXZpZXcqIGRvZXMgbm90IHJ1biBhbnkgUiBjb2RlIGNodW5rcy4gSW5zdGVhZCwgdGhlIG91dHB1dCBvZiB0aGUgY2h1bmsgd2hlbiBpdCB3YXMgbGFzdCBydW4gaW4gdGhlIGVkaXRvciBpcyBkaXNwbGF5ZWQuDQo=</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIlIgTm90ZWJvb2siDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KDQpUaGlzIGlzIGFuIFtSIE1hcmtkb3duXShodHRwOi8vcm1hcmtkb3duLnJzdHVkaW8uY29tKSBOb3RlYm9vay4gV2hlbiB5b3UgZXhlY3V0ZSBjb2RlIHdpdGhpbiB0aGUgbm90ZWJvb2ssIHRoZSByZXN1bHRzIGFwcGVhciBiZW5lYXRoIHRoZSBjb2RlLiANCg0KVHJ5IGV4ZWN1dGluZyB0aGlzIGNodW5rIGJ5IGNsaWNraW5nIHRoZSAqUnVuKiBidXR0b24gd2l0aGluIHRoZSBjaHVuayBvciBieSBwbGFjaW5nIHlvdXIgY3Vyc29yIGluc2lkZSBpdCBhbmQgcHJlc3NpbmcgKkN0cmwrU2hpZnQrRW50ZXIqLiANCg0KYGBge3J9DQoNCmxpYnJhcnkoUlNRTGl0ZSkNCg0KY29ubiA9IGRiQ29ubmVjdChTUUxpdGUoKSwgZGJuYW1lID0gJ2FwcC5kYicpIA0KZGJMaXN0VGFibGVzKGNvbm4pDQoNCmRiR2V0UXVlcnkoY29ubiwgJ3NlbGVjdCAqIGZyb20gbWluaWNhcmQnKQ0KDQpkYkdldFF1ZXJ5KGNvbm4sICdzZWxlY3QgKiBmcm9tIHByb2plY3QnKQ0KDQpkYkdldFF1ZXJ5KGNvbm4sICdzZWxlY3QgKiBmcm9tIHVzZXInKQ0KDQpkYkdldFF1ZXJ5KGNvbm4sICdzZWxlY3QgKiBmcm9tIHRlYW0nKQ0KDQoNCiMgZGJHZXRRdWVyeShjb25uLCAiREVMRVRFIEZST00gbWluaWNhcmQgV0hFUkUgaWQgPCA2IikNCg0KZGJHZXRRdWVyeShjb25uLCAiRFJPUCBUQUJMRSB1c2VyIikNCg0KDQoNCnJlc2x0cyA8LSBkYkdldFF1ZXJ5KGNvbm4sICdzZWxlY3QgKiBmcm9tIG1pbmljYXJkJykNCg0KZGJEaXNjb25uZWN0KGNvbm4pDQoNCmBgYA0KDQpBZGQgYSBuZXcgY2h1bmsgYnkgY2xpY2tpbmcgdGhlICpJbnNlcnQgQ2h1bmsqIGJ1dHRvbiBvbiB0aGUgdG9vbGJhciBvciBieSBwcmVzc2luZyAqQ3RybCtBbHQrSSouDQoNCldoZW4geW91IHNhdmUgdGhlIG5vdGVib29rLCBhbiBIVE1MIGZpbGUgY29udGFpbmluZyB0aGUgY29kZSBhbmQgb3V0cHV0IHdpbGwgYmUgc2F2ZWQgYWxvbmdzaWRlIGl0IChjbGljayB0aGUgKlByZXZpZXcqIGJ1dHRvbiBvciBwcmVzcyAqQ3RybCtTaGlmdCtLKiB0byBwcmV2aWV3IHRoZSBIVE1MIGZpbGUpLg0KDQpUaGUgcHJldmlldyBzaG93cyB5b3UgYSByZW5kZXJlZCBIVE1MIGNvcHkgb2YgdGhlIGNvbnRlbnRzIG9mIHRoZSBlZGl0b3IuIENvbnNlcXVlbnRseSwgdW5saWtlICpLbml0KiwgKlByZXZpZXcqIGRvZXMgbm90IHJ1biBhbnkgUiBjb2RlIGNodW5rcy4gSW5zdGVhZCwgdGhlIG91dHB1dCBvZiB0aGUgY2h1bmsgd2hlbiBpdCB3YXMgbGFzdCBydW4gaW4gdGhlIGVkaXRvciBpcyBkaXNwbGF5ZWQuDQo=</div>
 
 
 

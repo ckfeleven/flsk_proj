@@ -14,7 +14,20 @@ library(RSQLite)
 conn = dbConnect(SQLite(), dbname = 'app.db') 
 dbListTables(conn)
 
+dbGetQuery(conn, 'select * from minicard')
+
 dbGetQuery(conn, 'select * from project')
+
+dbGetQuery(conn, 'select * from user')
+
+dbGetQuery(conn, 'select * from team')
+
+
+# dbGetQuery(conn, "DELETE FROM minicard WHERE id < 6")
+
+dbGetQuery(conn, "DROP TABLE user")
+
+
 
 reslts <- dbGetQuery(conn, 'select * from minicard')
 
