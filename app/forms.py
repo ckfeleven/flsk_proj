@@ -9,7 +9,7 @@ from flask_wtf import FlaskForm
 from wtforms import (StringField, PasswordField, BooleanField, SubmitField, 
 SelectField, IntegerField, DecimalField, DateField)
 from wtforms.validators import ValidationError, DataRequired, Email, EqualTo
-from app.models import User, Project
+from app.models import User, Project, Team
 from datetime import date
 
 #from wtforms_sqlalchemy.fields import QuerySelectField
@@ -43,11 +43,13 @@ class MiniForm(FlaskForm):
      actual_hrs = DecimalField('Actual Hours')
      submit = SubmitField('Submit')
      
-
+def team_list():
+    return Team.query
      
 class RegistrationForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
     email = StringField('Email', validators=[DataRequired(), Email()])
+    team = QuerySelectField(query_factory = team_list, get_label='team')
     password = PasswordField('Password', validators=[DataRequired()])
     password2 = PasswordField(
         'Repeat Password', validators=[DataRequired(), EqualTo('password')])
@@ -66,3 +68,4 @@ class RegistrationForm(FlaskForm):
 class SearchForm(FlaskForm):
     date = StringField('Date', default = date.today)
     submit = SubmitField('Submit')
+    
