@@ -4,10 +4,10 @@ Created on Mon Jul 16 20:47:02 2018
 
 @author: Joanne
 """
-from flask import render_template, flash, redirect, request, url_for
+from flask import render_template, flash, redirect, request, url_for, jsonify
 from app import app, db
-from app.forms import LoginForm, MiniForm, RegistrationForm, SearchForm
-from app.models import Minicard, User
+from app.forms import LoginForm, MiniForm, RegistrationForm, SearchForm, TaskForm
+from app.models import Minicard, User, Tasks
 from flask_login import current_user, login_user, logout_user
 from werkzeug.urls import url_parse
 from app.tables import Results
@@ -154,3 +154,31 @@ def edit(id):
         #return render_template('edit_minicard.html', form=form)
     else:
         return 'Error loading #{id}'.format(id=id)
+
+
+@app.route('/tasks', methods = ['GET', 'POST'])
+def task_list():
+    form = TaskForm()
+    form.subtask.choices=[(task.id, task.task) for task in db.session.query(Tasks).filter(Tasks.parent_id == 2).all()]
+    
+    if request.method == 'POST':
+        subtask= db.session.query(Tasks).filter(Tasks.parent_id == form.task.data.id).first()
+        #subtask= db.session.query(Tasks).filter(Tasks.id == form.task.data).first()
+        return '<h1> Task: {}, subtask: {}</h1>'.format(form.task.data.id, subtask.task)
+    
+    
+    return render_template('task_list.html', form=form, title='Tasks')
+    
+@app.route('/task/<id>')
+def task(id):
+    subtasks = db.session.query(Tasks).filter(Tasks.parent_id == id).all()
+    subTaskArray = []
+    
+        
+    for st in subtasks:
+        taskObj = {}
+        taskObj['id'] = st.id
+        taskObj['task'] = st.task
+        subTaskArray.append(taskObj)
+        
+    return jsonify({'subtasks' : subTaskArray})

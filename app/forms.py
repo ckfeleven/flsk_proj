@@ -9,7 +9,7 @@ from flask_wtf import FlaskForm
 from wtforms import (StringField, PasswordField, BooleanField, SubmitField, 
 SelectField, IntegerField, DecimalField, DateField)
 from wtforms.validators import ValidationError, DataRequired, Email, EqualTo
-from app.models import User, Project, Team
+from app.models import User, Project, Team, Tasks
 from datetime import date
 
 #from wtforms_sqlalchemy.fields import QuerySelectField
@@ -68,4 +68,19 @@ class RegistrationForm(FlaskForm):
 class SearchForm(FlaskForm):
     date = StringField('Date', default = date.today)
     submit = SubmitField('Submit')
+
+def task_list():
+    return Tasks.query.filter(Tasks.parent_id == 1)
+ 
+def subtask_list():
+    return Tasks.query.filter(Tasks.parent_id > 1)
+
+   
+class TaskForm(FlaskForm):
+    #task = SelectField('Task', choices=[('task1', 'task1'), ('task2', 'task2'), ('task3', 'task3')])
+    task = QuerySelectField(query_factory = task_list, get_label='task')
+    subtask = SelectField('subtask', choices = [])
+    submit = SubmitField('Submit')
     
+
+        

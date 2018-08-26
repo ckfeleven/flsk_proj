@@ -17,7 +17,7 @@ class User(UserMixin, db.Model):
     username = db.Column(db.String(64), index=True, unique=True)
     email = db.Column(db.String(120), index=True, unique=True)
     password_hash = db.Column(db.String(128))
-    team = db.Column(db.String, db.ForeignKey('team.team'))
+    team = db.Column(db.String, db.ForeignKey('team.team')) 
     
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
@@ -72,4 +72,17 @@ class Project(db.Model):
         
     def __repr__(self):
         return self.project
+        
+
+        
+class Tasks(db.Model):
+    __tablename__ = 'tasks'
+    id = db.Column(db.Integer, primary_key=True)
+    parent_id = db.Column(db.Integer, db.ForeignKey('tasks.id'))
+    task = db.Column(db.String(64))
+    children = db.relationship("Tasks")    
+    
+    def __repr__(self):
+        #return '<Task {}>'.format(self.task)
+        return self.task
     
