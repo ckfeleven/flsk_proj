@@ -46,6 +46,7 @@ class Minicard(db.Model):
     #date = db.Column(db.String(64))
     project = db.Column(db.String(64))
     task = db.Column(db.String(64))
+    subtask = db.Column(db.String(64))
     predicted_hrs = db.Column(db.Numeric)
     actual_hrs = db.Column(db.Numeric)
         

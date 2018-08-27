@@ -17,4 +17,26 @@
         {% endfor %}
 
     </form>
+
+
+    <script>
+       let task_select = document.getElementById('task');
+       let subtask_select = document.getElementById('subtask');
+
+       task_select.onchange = function(){
+         task = task_select.value
+         fetch('/task/' + task).then(function(response){
+           response.json().then(function(data){
+             let optionHTML = '';
+
+             for(let subtask of data.subtasks){
+               optionHTML += '<option value="' + subtask.id + ' ">' + subtask.task + '</option>';
+               
+             }
+             subtask_select.innerHTML = optionHTML;
+           });
+         });
+         }
+    </script>
+
 {% endblock %}

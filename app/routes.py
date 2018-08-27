@@ -88,6 +88,7 @@ def search_results(search):
 @app.route('/minicard', methods=['GET', 'POST'])
 def minicard():
     form = MiniForm(username = current_user.username)
+    form.subtask.choices=[(task.id, task.task) for task in db.session.query(Tasks).filter(Tasks.parent_id == 2).all()]
     
     if request.method == 'POST':
 
@@ -102,7 +103,8 @@ def save_changes(minicard, form):
     minicard.username = form.username.data
     minicard.date = form.date.data
     minicard.project = str(form.project.data)
-    minicard.task = form.task.data
+    minicard.task = form.task.data.task
+    minicard.subtask = form.subtask.data
     minicard.predicted_hrs = form.predicted_hrs.data
     minicard.actual_hrs = form.actual_hrs.data
 
@@ -177,7 +179,8 @@ def task(id):
         
     for st in subtasks:
         taskObj = {}
-        taskObj['id'] = st.id
+        #taskObj['id'] = st.id
+        taskObj['id'] = st.task
         taskObj['task'] = st.task
         subTaskArray.append(taskObj)
         

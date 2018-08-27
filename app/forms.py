@@ -31,14 +31,17 @@ class LoginForm(FlaskForm):
 def proj_list():
     return Project.query  
 
-
+def task_list():
+    return Tasks.query.filter(Tasks.parent_id == 1)
     
 class MiniForm(FlaskForm):
      username = StringField('Username', validators=[DataRequired()])
      date = DateField('Date', default = date.today)
      #project = SelectField('Project', choices=[('project1', 'project1'), ('project2','project2')])
      project = QuerySelectField(query_factory = proj_list, get_label='project')
-     task = SelectField('Task', choices=[('task1', 'task1'), ('task2', 'task2'), ('task3', 'task3')])
+     #task = SelectField('Task', choices=[('task1', 'task1'), ('task2', 'task2'), ('task3', 'task3')])
+     task = QuerySelectField(query_factory = task_list, get_label='task')
+     subtask = SelectField('subtask', choices = [])
      predicted_hrs = DecimalField('Predicted Hours')
      actual_hrs = DecimalField('Actual Hours')
      submit = SubmitField('Submit')
