@@ -19,27 +19,35 @@
 // Global parameters:
 // do not resize the chart canvas when its container does (keep at 600x400px)
 Chart.defaults.global.responsive = false;
- 
-//var dataPack1 = [21000, 22000, 26000, 35000, 55000, 55000, 56000, 59000, 60000, 61000];
-var dataPack1 = [21000, 22000, 26000, 35000, 55000, 55000, 56000, 59000, 60000, 61000, 60100, 62000];
-var dataPack2 = [1000, 1200, 1300, 1400, 1060, 2030, 2070, 4000, 4100, 4020, 4030, 4050];
-var dates = ["May 1", "May 2", "May 3", "May 4", "May 5", "May 6", "May 7", "May 8", "May 9", "May 10", "May 11", "May 12"];
+
+
+var dataPack1 = [21000, 22000, 26000];
+var dataPack2 = [10000, 12000, 13000];
+var dataPack3 = [31000, 23000, 12000];
+var dates = ["01-SEP-2018", "02-SEP-2018", "03-SEP-2018"];
 
 // define the chart data
 var chartData = {
-  labels : dates,
-  datasets : [{
-      label: 'Bowser',
-      data : dataPack1,
+  'labels' : dates,
+  'datasets' : [{
+      'label': 'Task1',
+      'data' : dataPack1,
 	  backgroundColor: "rgba(55, 160, 225, 0.7)",
 	  hoverBackgroundColor: "rgba(55, 160, 225, 0.7)",
 	  hoverBorderWidth: 2,
 	  hoverBorderColor: 'lightgrey'     
 }, {
-  label: 'Mario',
+  label: 'Task2',
   data: dataPack2,
   backgroundColor: "rgba(225, 58, 55, 0.7)",
   hoverBackgroundColor: "rgba(225, 58, 55, 0.7)",
+  hoverBorderWidth: 2,
+  hoverBorderColor: 'lightgrey'
+},{
+  label: 'Task3',
+  data: dataPack3,
+  backgroundColor: "rgba(180, 180, 55, 0.7)",
+  hoverBackgroundColor: "rgba(180, 180, 55, 0.7)",
   hoverBorderWidth: 2,
   hoverBorderColor: 'lightgrey'
 }]

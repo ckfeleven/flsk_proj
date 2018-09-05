@@ -14,6 +14,7 @@ class Results(Table):
     date = Col('Date')
     project = Col('Project')
     task = Col('Task')
+    subtask = Col('Subtask')
     predicted_hrs = Col('Predicted Hours')
     actual_hrs = Col('Actual Hours')
     edit = LinkCol('Edit', 'edit', url_kwargs=dict(id='id'))

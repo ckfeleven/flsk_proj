@@ -8,7 +8,7 @@ from flask import render_template, flash, redirect, request, url_for, jsonify
 from app import app, db
 from app.forms import LoginForm, MiniForm, RegistrationForm, SearchForm, TaskForm
 from app.models import Minicard, User, Tasks
-from flask_login import current_user, login_user, logout_user
+from flask_login import current_user, login_user, logout_user, login_required
 from werkzeug.urls import url_parse
 from app.tables import Results
 from sqlalchemy import func
@@ -86,6 +86,7 @@ def search_results(search):
 
 
 @app.route('/minicard', methods=['GET', 'POST'])
+@login_required
 def minicard():
     form = MiniForm(username = current_user.username)
     form.subtask.choices=[(task.id, task.task) for task in db.session.query(Tasks).filter(Tasks.parent_id == 2).all()]
@@ -111,6 +112,24 @@ def save_changes(minicard, form):
     db.session.add(minicard)
 
     db.session.commit()
+
+@app.route('/item/<int:id>', methods =  ['GET', 'POST'])
+def edit(id):
+    qry = db.session.query(Minicard).filter(Minicard.id == id)
+    result = qry.first()
+
+    if result:
+        form = MiniForm(formdata=request.form, obj = result)
+        if request.method == 'POST':
+            save_changes(result, form)
+            flash('Minicard updated sucessfully')
+            return redirect(url_for('search'))
+        return render_template('minicard.html', form=form)
+        #return render_template('edit_minicard.html', form=form)
+    else:
+        return 'Error loading #{id}'.format(id=id)
+
+
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -141,21 +160,6 @@ def chart():
 def chart2():
     return render_template('chart2.html')
 
-@app.route('/item/<int:id>', methods =  ['GET', 'POST'])
-def edit(id):
-    qry = db.session.query(Minicard).filter(Minicard.id == id)
-    result = qry.first()
-
-    if result:
-        form = MiniForm(formdata=request.form, obj = result)
-        if request.method == 'POST':
-            save_changes(result, form)
-            flash('Minicard updated sucessfully')
-            return redirect(url_for('search'))
-        return render_template('minicard.html', form=form)
-        #return render_template('edit_minicard.html', form=form)
-    else:
-        return 'Error loading #{id}'.format(id=id)
 
 
 @app.route('/tasks', methods = ['GET', 'POST'])
