@@ -22,10 +22,14 @@ dbGetQuery(conn, 'select * from user')
 
 dbGetQuery(conn, 'select * from team')
 
+dbGetQuery(conn, 'select * from tasks')
 
-# dbGetQuery(conn, "DELETE FROM minicard WHERE id < 6")
 
-dbGetQuery(conn, "DROP TABLE user")
+
+
+#dbGetQuery(conn, "DELETE FROM tasks WHERE id >= 1")
+
+#dbGetQuery(conn, "DROP TABLE user")
 
 
 

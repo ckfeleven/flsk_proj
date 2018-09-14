@@ -21,15 +21,21 @@
 Chart.defaults.global.responsive = false;
  
 // define the chart data
+
+
 var chartData = {
   labels : [{% for item in labels %}
              "{{item}}",
             {% endfor %}],
   datasets : [{
       label: '{{ legend }}',
+      //data : [
+       //         {{values}}
+       //       ],
+
       data : [{% for item in values %}
-                {{item}},
-              {% endfor %}],
+              {{item}},
+            {% endfor %}],
       //spanGaps: false
   }]
 }

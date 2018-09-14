@@ -14,6 +14,7 @@ from app.tables import Results
 from sqlalchemy import func
 from sqlalchemy.sql import label
 from datetime import date
+import json
 
 @app.route('/')
 @app.route('/index')
@@ -153,12 +154,38 @@ def chart():
     #labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August']
     #values = [10, 9, 8, 7, 6, 4, 7, 8]
     labels = [x[0] for x in sum_data]
+    #values = json.dumps([x[1] for x in sum_data], use_decimal=True)
     values = [x[1] for x in sum_data]
     return render_template('chart.html', values=values, labels=labels, legend=legend)
 
+#@app.route('/search', methods=['GET', 'POST'])
+#def search():
+#    search = SearchForm(request.form)
+#    if request.method == 'POST':
+#        return search_results(search)
+
+#    return render_template('search.html', title = 'Search', form=search)
+
+
+
+@app.route('/search_chart2', methods=['GET', 'POST'])
+def search_chart2():
+    search = chart2_form(request.form)
+    if request.method == 'POST'
+        return 
+
+def taskz(x, y):
+    try:
+        result = db.session.query(Minicard, label('total_hrs', func.sum(Minicard.actual_hrs))).group_by(Minicard.task).filter(Minicard.date == x).filter(Minicard.task == y).all()
+        a = float(result[0][1])
+    except IndexError:
+        return 0
+    return a
+
 @app .route('/simple_chart2')
 def chart2():
-    return render_template('chart2.html')
+    chart_data = [[taskz(y, x) for x in ['task1', 'task2', 'task3']] for y in ['2018-09-01', '2018-09-02', '2018-09-03']]
+    return render_template('chart2.html', chart_data = chart_data)
 
 
 

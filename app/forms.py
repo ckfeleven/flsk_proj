@@ -12,6 +12,7 @@ from wtforms.validators import ValidationError, DataRequired, Email, EqualTo
 from app.models import User, Project, Team, Tasks
 from datetime import date
 
+
 #from wtforms_sqlalchemy.fields import QuerySelectField
 
 from wtforms.ext.sqlalchemy.fields import QuerySelectField
@@ -84,6 +85,10 @@ class TaskForm(FlaskForm):
     task = QuerySelectField(query_factory = task_list, get_label='task')
     subtask = SelectField('subtask', choices = [])
     submit = SubmitField('Submit')
+    
+class chart2_form(FlaskForm):
+    date = DateField('Date')
+    sumbit = SubmitField('Submit')
     
 
         
